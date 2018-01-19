@@ -7,7 +7,7 @@ venv:
 	virtualenv --python=python3 .venv && .venv/bin/python setup.py develop
 
 run: venv
-	FLASK_APP=belka_flask BELKA_FLASK_SETTINGS=../settings.cfg .venv/bin/flask run
+	FLASK_APP=belka_flask BELKA_FLASK_SETTINGS=../settings.cfg .venv/bin/flask run --host=0.0.0.0
 
 test: venv
 	BELKA_FLASK_SETTINGS=../settings.cfg .venv/bin/python -m unittest discover -s tests
