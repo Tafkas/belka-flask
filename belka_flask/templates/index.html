@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+    <title>Belka Flask</title>
+    <!-- CSS -->
+    <!-- Add Material font (Roboto) and Material icon as needed -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Add Material CSS, replace Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/material.min.css') }}">
+</head>
+<body>
+<h1>Welcome to Belka Flask</h1>
+
+Status: {{ message }}
+
+<form action="/forward/" method="post">
+    <button name="forwardBtn" type="submit" class="btn btn-info">Move Forward</button>
+</form>
+<form action="/backward/" method="post">
+    <button name="backwardBtn" type="submit" class="btn btn-info">Move Backward</button>
+</form>
+<form action="/turnleft/" method="post">
+    <button name="leftturnBtn" type="submit" class="btn btn-info">Turn Left</button>
+</form>
+<form action="/turnright/" method="post">
+    <button name="rightturnBtn" type="submit" class="btn btn-info">Turn Right</button>
+</form>
+<form action="/stop/" method="post">
+    <button name="stopBtn" type="submit" class="btn btn-info">Stop!</button>
+</form>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+<!-- Then Material JavaScript on top of Bootstrap JavaScript -->
+<script src="{{ url_for('static', filename='js/material.js') }}"></script>
+</body>
+</html>

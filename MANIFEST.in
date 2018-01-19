@@ -1,0 +1,2 @@
+recursive-include belka_flask/templates *
+recursive-include belka_flask/static *
