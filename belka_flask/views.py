@@ -40,12 +40,16 @@ def move_backward():
 @app.route("/turnleft/", methods=['POST'])
 def turn_left():
     forward_message = "Turning Left..."
+    TB.SetMotor1(-50)
+    TB.SetMotor2(50)
     return render_template('index.html', message=forward_message)
 
 
 @app.route("/turnright/", methods=['POST'])
 def turn_right():
     forward_message = "Turning Right..."
+    TB.SetMotor1(50)
+    TB.SetMotor2(-50)
     return render_template('index.html', message=forward_message)
 
 
