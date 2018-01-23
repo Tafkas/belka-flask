@@ -17,6 +17,7 @@ if not TB.foundChip:
         print('TB.i2cAddress = 0x%02X' % (boards[0]))
     sys.exit()
 
+
 @app.route('/')
 def index():
     app.logger.warning('sample message')
