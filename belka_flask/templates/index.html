@@ -35,10 +35,45 @@ Status: {{ message }}
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
 <!-- Then Material JavaScript on top of Bootstrap JavaScript -->
 <script src="{{ url_for('static', filename='js/material.js') }}"></script>
+<script>
+    $(document).keypress(function (e) {
+        if (e.keyCode == 37 || e.charCode == 97) {
+            $.ajax({
+                type: 'POST',
+                url: '/turnleft/'
+            })
+        }
+        else if (e.keyCode == 38 || e.charCode == 119) {
+            $.ajax({
+                type: 'POST',
+                url: '/forward/'
+            })
+        }
+        else if (e.keyCode == 39 || e.charCode == 100) {
+            $.ajax({
+                type: 'POST',
+                url: '/turnright/'
+            })
+        }
+        else if (e.keyCode == 40 || e.charCode == 115) {
+            $.ajax({
+                type: 'POST',
+                url: '/backwards/'
+            })
+        }
+
+        else {
+            $.ajax({
+                type: 'POST',
+                url: '/stop/'
+            })
+        }
+    });
+</script>
 </body>
 </html>
