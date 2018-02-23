@@ -66,10 +66,12 @@ def stop():
 def battery():
     filename = '/home/pi/battery_check/logs/battery-{}.csv'.format(datetime.datetime.today().strftime('%Y-%m-%d'))
     data = []
-
+    min_data = []
     with open(filename, 'r') as f:
         next(f)
         for line in f:
             d = line.rstrip().split(',')
-            data.append([1000 * int(d[0]), float(d[1])])
-    return render_template('battery.html', data=data)
+            timestamp = 1000 * int(d[0])
+            data.append([timestamp, float(d[1])])
+            min_data.append([timestamp, 10.4])
+    return render_template('battery.html', data=data, min_data=min_data)
