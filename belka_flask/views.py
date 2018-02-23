@@ -1,3 +1,4 @@
+import datetime
 import sys
 from flask import render_template
 
@@ -59,3 +60,16 @@ def stop():
     forward_message = "Stop..."
     TB.SetMotors(0)
     return render_template('index.html', message=forward_message)
+
+
+@app.route('/battery', methods=['GET'])
+def battery():
+    filename = '/home/pi/battery_check/logs/battery-{}.csv'.format(datetime.datetime.today().strftime('%Y-%m-%d'))
+    data = []
+
+    with open(filename, 'r') as f:
+        next(f)
+        for line in f:
+            d = line.rstrip().split(',')
+            data.append([1000 * int(d[0]), float(d[1])])
+    return render_template('battery.html', data=data)
